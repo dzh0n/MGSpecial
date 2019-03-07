@@ -4,8 +4,8 @@
     <description>
         Приложение сайта мужичок-грузовичок.рф
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="on3473@gmail.com" href="https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai">
+        Мужичок-грузовичок
     </author>
     <preference name="phonegap-version" value="cli-8.0.0" />
     <preference name="android-build-tool" value="gradle" />
