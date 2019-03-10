@@ -1,17 +1,34 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="ru.mg.special" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Demopush</name>
+    <feature name="Device">
+        <param name="browser-package" value="Device" />
+    </feature>
+    <name>МГ Спецтехника</name>
     <description>
-        A blank PhoneGap app.
+        Приложение сайта мужичок-грузовичок.рф
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="on3473@gmail.com" href="https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai">
+        Мужичок-грузовичок
     </author>
+    <icon src="www/icon.png" />
+    <icon height="120" platform="ios" src="www/res/icons/ios/icon-120.png" width="120" />
+    <icon height="76" platform="ios" src="www/res/icons/ios/icon-76.png" width="76" />
+    <icon height="152" platform="ios" src="www/res/icons/ios/icon-152.png" width="152" />
+    <icon height="40" platform="ios" src="www/res/icons/ios/icon-40.png" width="40" />
+    <icon height="1024" platform="ios" src="www/res/icons/ios/icon-1024.png" width="1024" />
     <content src="index.html" />
     <access origin="*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" launch-external="yes" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
     <preference name="phonegap-version" value="cli-8.0.0" />
     <preference name="android-build-tool" value="gradle" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="android-targetSdkVersion" value="26" />
     <preference name="android-compileSdkVersion" value="26" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="Fullscreen" value="false" />
+    <preference name="orientation" value="portrait" />
+    <preference name="StatusBarOverlaysWebView" value="true" />
 </widget>

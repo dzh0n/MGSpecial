@@ -12,6 +12,27 @@
         },
         "onesignal-cordova-plugin": {
             "PACKAGE_NAME": "com.markpoint.demopush"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "ru.mg.special"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "ru.mg.special"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "ru.mg.special"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "ru.mg.special"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "ru.mg.special"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "ru.mg.special"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "ru.mg.special"
         }
     },
     "dependent_plugins": {}
