@@ -21,6 +21,7 @@
     <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
     <plugin name="cordova-plugin-device" spec="~2.0.2" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.3" />
+    <plugin name="com.telerik.plugins.nativepagetransitions" source="npm" />
 
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Fullscreen" value="false" />

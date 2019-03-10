@@ -97,6 +97,14 @@ module.exports = [
         "id": "cordova-plugin-device.DeviceProxy",
         "pluginId": "cordova-plugin-device",
         "runs": true
+    },
+    {
+        "file": "plugins/com.telerik.plugins.nativepagetransitions/www/NativePageTransitions.js",
+        "id": "com.telerik.plugins.nativepagetransitions.NativePageTransitions",
+        "pluginId": "com.telerik.plugins.nativepagetransitions",
+        "clobbers": [
+            "window.plugins.nativepagetransitions"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -110,7 +118,8 @@ module.exports.metadata =
     "cordova-plugin-geolocation": "4.0.1",
     "cordova-plugin-dialogs": "2.0.1",
     "cordova-plugin-device": "2.0.2",
-    "cordova-plugin-whitelist": "1.3.3"
+    "cordova-plugin-whitelist": "1.3.3",
+    "com.telerik.plugins.nativepagetransitions": "0.6.5"
 }
 // BOTTOM OF METADATA
 });

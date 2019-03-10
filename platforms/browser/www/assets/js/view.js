@@ -73,7 +73,17 @@ document.addEventListener("deviceready", function(){
 
     document.addEventListener("backbutton", function(e){
 
-        navigator.app.backHistory();
+        window.plugins.pagetransitions.slide({
+                'direction': 'right',
+                'duration': 400,
+                'androiddelay': 50,
+                'href': 'main.html'
+            },
+            function () {
+                console.log('slide transition finished');
+            });
+
+        //navigator.app.backHistory();
 
        /* if($.mobile.activePage.is('#homepage')){
             e.preventDefault();
@@ -85,6 +95,18 @@ document.addEventListener("deviceready", function(){
     }, false);
 
 });
+
+function back() {
+    window.plugins.pagetransitions.slide({
+            'direction': 'right',
+            'duration': 400,
+            'androiddelay': 50,
+            'href': 'index.html'
+        },
+        function () {
+            alert('slide transition finished');
+        });
+}
 
 
 
