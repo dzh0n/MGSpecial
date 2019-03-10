@@ -6,10 +6,11 @@
     <meta name="format-detection" content="telephone=no"/>
     <title></title>
     <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
     <link href="assets/fonts/roboto/roboto.css" rel="stylesheet">
     <link href="assets/fonts/fontawesome/css/all.min.css" rel="stylesheet">
 </head>
-<body class="view-page">
+<body class="view-page animated fadeIn">
 
 <div class="wrapper">
     <!-- header -->
@@ -51,10 +52,11 @@
             <span>Стерлитамак, ул. Техническая, 2</span>
         </div>
         <div id="y-map">
-            <script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+            <script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&onload=init"></script>
         </div>
         <script type="text/javascript">
-            ymaps.ready(init);
+
+
 
             function init() {
                 var map = new ymaps.Map('y-map', {
