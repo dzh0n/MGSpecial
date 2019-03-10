@@ -68,16 +68,22 @@ document.addEventListener("deviceready", function(){
     if (cordova.platformId == 'android') {
         StatusBar.backgroundColorByHexString("#FFDD0A");
     }
-    setTimeout(function () {
-       location.replace('main.html');
-    }, 3000);
-
-    document.addEventListener("backbutton", function(e){
-        e.preventDefault();
-        navigator.app.exitApp();
-    }, false);
 
     document.addEventListener("offline", onOffline, false);
+
+    document.addEventListener("backbutton", function(e){
+
+        navigator.app.backHistory();
+
+       /* if($.mobile.activePage.is('#homepage')){
+            e.preventDefault();
+            navigator.app.exitApp();
+        }
+        else {
+            navigator.app.backHistory();
+        }*/
+    }, false);
+
 });
 
 

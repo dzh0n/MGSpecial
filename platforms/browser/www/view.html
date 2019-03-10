@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/fonts/roboto/roboto.css" rel="stylesheet">
+    <link href="assets/fonts/fontawesome/css/all.min.css" rel="stylesheet">
+</head>
+<body class="view-page">
+
+<div class="wrapper">
+    <!-- header -->
+    <div class="header-fixed">
+        <div class="header-fixed-left">
+            <a href="javascript:;" onclick="navigator.app.backHistory();"><i class="fas fa-arrow-left"></i></a>
+        </div>
+        <div class="header-fixed-center">
+            <h2>Заказ №65899</h2>
+        </div>
+        <div class="header-fixed-right">
+            <a href="javascript:;">&nbsp;</a>
+        </div>
+    </div>
+    <!-- header -->
+
+    <div class="advert-view">
+
+        <div class="advert-list-item">
+            <a href="view.html">
+                <h2>Экскаватор-погрузчик гусеничный</h2>
+                <div class="date-item">28.02.2019, 15:44</div>
+                <div class="text-item">
+                    Арендую экскаватор-погрузчик гусеничный или его аналог, желательно два. По срокам нужен от пяти до семи дней.
+                </div>
+            </a>
+            <div class="bottom-item">
+                <div class="bottom-item-user">
+                    <i class="far fa-user-circle"></i> Иван Петров
+                </div>
+                <div class="bottom-item-call">
+                    <a href="tel:+79053537741"><i class="fas fa-phone"></i> Позвонить</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="advert-item-address">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Стерлитамак, ул. Техническая, 2</span>
+        </div>
+        <div id="y-map">
+            <script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU"></script>
+        </div>
+        <script type="text/javascript">
+            ymaps.ready(init);
+
+            function init() {
+                var map = new ymaps.Map('y-map', {
+                    center: [ 53.053139867139265,56.424014883480126 ],
+                    zoom: 16,
+                    controls: ['zoomControl','typeSelector','fullscreenControl'],
+                    behaviors: ['drag']
+                });
+                var placemark = new ymaps.Placemark([ 53.053139867139265,56.424014883480126 ],
+                    {
+
+                    },
+                    {
+                        iconLayout: 'default#image',
+                        iconImageHref: 'assets/img/point.png',
+                        iconImageSize: [27, 41]
+                    });
+
+                map.geoObjects.add(placemark);
+                map.setBounds(map.geoObjects.getBounds(), {
+                    checkZoomRange: true,
+                    zoomMargin: 35
+                });
+
+                /*if(window.innerWidth<500)
+                    map.behaviors.disable('drag');*/
+            }
+        </script>
+
+
+    </div>
+
+
+
+</div><!-- .wrapper -->
+
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/global.js"></script>
+<script type="text/javascript" src="assets/js/view.js"></script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+</body>
+</html>

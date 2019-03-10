@@ -69,9 +69,31 @@ document.addEventListener("deviceready", function(){
         StatusBar.backgroundColorByHexString("#FFDD0A");
     }
 
+    document.addEventListener("offline", onOffline, false);
+
+    document.addEventListener("backbutton", function(e){
+
+        navigator.notification.confirm(
+            'Вы действительно хотите выйти и закрыть приложение?', // message
+            function(buttonIndex){
+                if(buttonIndex==2)
+                    navigator.app.exitApp();
+            },            // callback to invoke with index of button pressed
+            'Выход из приложения',           // title
+            ['Продолжить','Выйти']     // buttonLabels
+        );
+       /* if($.mobile.activePage.is('#homepage')){
+            e.preventDefault();
+            navigator.app.exitApp();
+        }
+        else {
+            navigator.app.backHistory();
+        }*/
+    }, false);
+
 });
 
-document.addEventListener("offline", onOffline, false);
+
 
 
 

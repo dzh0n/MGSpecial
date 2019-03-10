@@ -71,9 +71,16 @@ document.addEventListener("deviceready", function(){
     setTimeout(function () {
        location.replace('main.html');
     }, 3000);
+
+    document.addEventListener("backbutton", function(e){
+        e.preventDefault();
+        navigator.app.exitApp();
+    }, false);
+
+    document.addEventListener("offline", onOffline, false);
 });
 
-document.addEventListener("offline", onOffline, false);
+
 
 
 
