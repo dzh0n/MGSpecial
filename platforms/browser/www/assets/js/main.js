@@ -69,6 +69,8 @@ document.addEventListener("deviceready", function(){
         StatusBar.backgroundColorByHexString("#FFDD0A");
     }
 
+    checkRegion();
+
     document.addEventListener("offline", onOffline, false);
 
     document.addEventListener("backbutton", function(e){

@@ -36,15 +36,6 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
 
-        var notificationOpenedCallback = function(jsonData) {
-            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-        };
-
-        window.plugins.OneSignal
-            .startInit("545e0ae9-f360-47cb-be70-8c8bab0ac2cc")
-            .handleNotificationOpened(notificationOpenedCallback)
-            .endInit();
-
 
         //navigator.vibrate([1000, 1000, 3000, 1000, 2000]);
     },
@@ -69,31 +60,22 @@ document.addEventListener("deviceready", function(){
         StatusBar.backgroundColorByHexString("#FFDD0A");
     }
 
-    checkRegion();
+    showRegionName('.current-region span');
 
     document.addEventListener("offline", onOffline, false);
 
     document.addEventListener("backbutton", function(e){
-
-        navigator.notification.confirm(
-            'Вы действительно хотите выйти и закрыть приложение?', // message
-            function(buttonIndex){
-                if(buttonIndex==2)
-                    navigator.app.exitApp();
-            },            // callback to invoke with index of button pressed
-            'Выход из приложения',           // title
-            ['Продолжить','Выйти']     // buttonLabels
-        );
-       /* if($.mobile.activePage.is('#homepage')){
-            e.preventDefault();
-            navigator.app.exitApp();
-        }
-        else {
-            navigator.app.backHistory();
-        }*/
+        back();
     }, false);
 
 });
+
+function back() {
+    location.replace('main.html');
+    //navigator.app.backHistory();
+}
+
+
 
 
 

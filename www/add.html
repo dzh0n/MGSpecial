@@ -22,52 +22,53 @@
             <h2>Создание заказа</h2>
         </div>
         <div class="header-fixed-right">
-            <a href="javascript:;"></i></a>
+            <a href="javascript:;"></a>
         </div>
     </div>
     <!-- header -->
-
+    <form id="order-form" method="post">
     <div class="order-form">
         <div class="order-form-row">
             <label>Мне нужно (название техники ил услуги)</label>
-            <input type="text" placeholder="Например, экскаватор-погрузчик">
+            <input type="text" name="subject" required placeholder="Например, экскаватор-погрузчик">
         </div>
     </div>
 
     <div class="order-form">
         <div class="order-form-row">
             <label>Описание заказа</label>
-            <textarea placeholder="Опишите для чего вам нужна техника или услуга, на какой срок, бюджет, наличный или безналичный расчет"></textarea>
+            <textarea name="info" required placeholder="Опишите для чего вам нужна техника или услуга, на какой срок, бюджет, наличный или безналичный расчет"></textarea>
         </div>
     </div>
 
     <div class="order-form">
         <div class="order-form-row">
             <label>Адрес</label>
-            <input type="text" placeholder="Например, Стерлитамак, Техническая, 2">
+            <input type="text" name="address" required placeholder="Например, Стерлитамак, Техническая, 2">
         </div>
     </div>
 
     <div class="order-form">
         <div class="order-form-row">
             <label>Контактное лицо / Организация</label>
-            <input type="text" placeholder="Ваше имя или название организации">
+            <input type="text" name="name" required placeholder="Ваше имя или название организации">
         </div>
     </div>
 
     <div class="order-form">
         <div class="order-form-row">
             <label>Контактный телефон</label>
-            <input type="text" placeholder="Укажите ваш контактный телефон">
+            <input type="text" name="phone" required placeholder="Укажите ваш контактный телефон">
         </div>
     </div>
 
+
     <!-- add order btn -->
-    <div class="add-order-btn-wrap">
-        <a href="add.html"><span>Опубликовать заказ</span></a>
+    <div class="add-order-btn-wrap no-fix">
+        <button><span>Опубликовать заказ</span></button>
     </div>
     <!-- add order btn -->
-
+    </form>
 
 </div><!-- .wrapper -->
 

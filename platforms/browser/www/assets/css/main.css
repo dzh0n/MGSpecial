@@ -189,7 +189,7 @@ body {
     padding: 20px 20px 10px;
 }
 .order-form-row label {
-    color: #525252;
+    color: #000;
     font-size: 14px;
     margin-bottom: 10px;
     display: block;
@@ -202,7 +202,7 @@ body {
     padding: 5px 0px;
     font-family: 'Roboto';
     font-size: 16px;
-    color: #999999;
+    color: #000;
     border-bottom: 0.5px solid #999999;
     outline: none;
 }
@@ -213,7 +213,7 @@ body {
     padding: 5px 0px;
     font-family: 'Roboto';
     font-size: 16px;
-    color: #999999;
+    color: #000;
     border-bottom: 0.5px solid #999999;
     outline: none;
     resize: none;
@@ -232,6 +232,9 @@ body {
     align-items: center;
     justify-content: center;
 }
+.add-order-btn-wrap.no-fix {
+    position: relative;
+}
 .add-order-btn-wrap a {
     text-decoration: none;
     width: 275px;
@@ -248,4 +251,52 @@ body {
     color: #000000;
     font-size: 20px;
     font-weight: 500;
+}
+.add-order-btn-wrap button {
+    border: 0;
+    width: 275px;
+    height: 45px;
+    display: block;
+    background: #FFDD0A;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: inherit;
+}
+.add-order-btn-wrap button span {
+    color: #000000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+
+.regionSelect-wrap {
+    padding: 10px 20px 20px;
+}
+.regionSelect-wrap .liter {
+    font-weight: 500;
+    font-size: 20px;
+    margin: 20px 0px 10px;
+}
+.regionSelect-wrap .link {
+
+}
+.regionSelect-wrap .link a {
+    color: inherit;
+    font-size: 15px;
+    display: inline-block;
+    margin: 5px 0px;
+}
+.current-region {
+    padding: 20px 20px 20px;
+    font-weight: 500;
+    font-size: 20px;
+    border-bottom: #999 .5px solid;
+}
+.current-region span {
+    display: block;
+    padding: 10px 0px 0px;
+    text-decoration: underline;
 }
