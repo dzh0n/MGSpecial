@@ -78,9 +78,9 @@ document.addEventListener("deviceready", function(){
 
     setParams();
 
-    /*setTimeout(function () {
+    setTimeout(function () {
         location.replace('main.html');
-    }, 1000);*/
+    }, 1000);
 
 });
 

@@ -1,7 +1,7 @@
 var currentDate = new Date();
 var apiKey = getApiKey();
 var apiUrl = 'https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/vapi/';
-var db;
+var db = openDatabase("mgs.db", '1.0', "MGS DateBase", 2 * 1024 * 1024);;
 
 $(document).ready(function(){
 
@@ -30,12 +30,7 @@ function onOffline() {
 function checkRegion() {
    // window.localStorage.clear();
 
-    var regionId = window.localStorage.getItem('regionId');
-
-    if(regionId) {
-
-    }
-    else {
+    if(window.localStorage.getItem('regionId') == null) {
         location.replace('regions.html');
     }
 }
@@ -71,7 +66,21 @@ function setParams() {
         window.localStorage.setItem('current_limit_calls', 0);
     }
 
-    db = openDatabase("mgs.db", '1.0', "MGS DateBase", 2 * 1024 * 1024);
+    if(window.localStorage.getItem('tariff') == null) {
+        $.ajax({
+            url: apiUrl+'config/tariff',
+            method: 'POST',
+            data: 'key='+apiKey,
+            cache: false,
+            success: function (result) {
+                if(parseInt(result)>0) {
+                    window.localStorage.setItem('tariff', result);
+                }
+            }
+        });
+    }
+
+
 
     /*db.transaction(function(tx) {
         tx.executeSql("DROP TABLE Orders", [], function(result){}, function(tx, error){});
@@ -84,7 +93,7 @@ function setParams() {
             tx.executeSql("CREATE TABLE Orders (\n" +
                 "  id INT UNIQUE,\n" +
                 "  region_id INT,\n" +
-                "  date_create TIMESTAMP,\n" +
+                "  date_create TEXT,\n" +
                 "  subject TEXT,\n" +
                 "  content TEXT,\n" +
                 "  address TEXT,\n" +
@@ -96,11 +105,16 @@ function setParams() {
         })
     });
 
+    db.transaction(function(tx) {
+        tx.executeSql("DELETE FROM Orders", [], function(result){}, function(tx, error){});
+    });
+
     if(window.localStorage.getItem('regionId') != null) {
         //загрузка заказов
         $.ajax({
             url: apiUrl+'orders/special',
             method: 'POST',
+            async: false,
             data: 'key='+apiKey+'&regionId='+window.localStorage.getItem('regionId'),
             cache: false,
             dataType: 'json',
@@ -130,6 +144,32 @@ function setParams() {
     }
 
 
+}
+
+function loadOrders() {
+    $('.advert-list').html('');
+    db.transaction(function (tx) {
+        tx.executeSql("SELECT * FROM Orders", [], function (tx, result) {
+            for (var i = 0; i < result.rows.length; i++) {
+
+                $('.advert-list').append('<div class="advert-list-item">\n' +
+                    '            <a href="view.html">\n' +
+                    '                <h2>'+result.rows.item(i)['subject']+'</h2>\n' +
+                    '                <div class="date-item">'+result.rows.item(i)['date_create']+'</div>\n' +
+                    '                <div class="text-item">\n'+result.rows.item(i)['content']+'</div>\n' +
+                    '            </a>\n' +
+                    '            <div class="bottom-item">\n' +
+                    '                <div class="bottom-item-user">\n' +
+                    '                    <i class="far fa-user-circle"></i> '+result.rows.item(i)['client_name']+'\n' +
+                    '                </div>\n' +
+                    '                <div class="bottom-item-call">\n' +
+                    '                    <a href="tel:'+result.rows.item(i)['client_phone']+'"><i class="fas fa-phone"></i> Позвонить</a>\n' +
+                    '                </div>\n' +
+                    '            </div>\n' +
+                    '        </div>');
+            }
+        }, null)
+    });
 }
 
 

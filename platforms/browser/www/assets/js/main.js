@@ -71,6 +71,8 @@ document.addEventListener("deviceready", function(){
 
     checkRegion();
 
+    loadOrders();
+
     document.addEventListener("offline", onOffline, false);
 
     document.addEventListener("backbutton", function(e){
