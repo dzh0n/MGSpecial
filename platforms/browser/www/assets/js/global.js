@@ -59,10 +59,8 @@ function setParams() {
             data: 'key='+apiKey,
             cache: false,
             success: function (result) {
-                alert(result);
                 if(parseInt(result)>0) {
                     window.localStorage.setItem('limit_calls', result);
-                    alert(result);
                 }
             }
         });
@@ -81,7 +79,6 @@ function setParams() {
             success: function (result) {
                 if(parseInt(result)>0) {
                     window.localStorage.setItem('tariff', result);
-                    alert(result);
                 }
             }
         });
