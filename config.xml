@@ -51,7 +51,7 @@
 
     <content src="index.html" />
 
-    <allow-intent href="https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/*" />
+    <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" launch-external="yes" />
     <platform name="android">
         <allow-intent href="market:*" />

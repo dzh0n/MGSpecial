@@ -77,10 +77,10 @@ document.addEventListener("deviceready", function(){
     document.addEventListener("offline", onOffline, false);
 
     setParams();
-
+/*
     setTimeout(function () {
         location.replace('main.html');
-    }, 1000);
+    }, 1000);*/
 
 });
 
