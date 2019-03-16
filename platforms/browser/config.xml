@@ -17,7 +17,7 @@
     <icon height="40" platform="ios" src="www/res/icons/ios/icon-40.png" width="40" />
     <icon height="1024" platform="ios" src="www/res/icons/ios/icon-1024.png" width="1024" />
     <content src="index.html" />
-    <allow-intent href="https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/*" />
+    <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" launch-external="yes" />
     <preference name="phonegap-version" value="cli-8.0.0" />
     <preference name="android-build-tool" value="gradle" />
