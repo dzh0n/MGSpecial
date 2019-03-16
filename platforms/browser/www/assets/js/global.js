@@ -56,6 +56,7 @@ function setParams() {
         $.ajax({
             url: apiUrl+'config/limit_calls',
             method: 'POST',
+            beforeSend: function(){alert()},
             data: 'key='+apiKey,
             cache: false,
             success: function (result) {
