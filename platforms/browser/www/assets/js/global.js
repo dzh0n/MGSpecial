@@ -64,9 +64,6 @@ function setParams() {
                     window.localStorage.setItem('limit_calls', result);
                     alert(result);
                 }
-            },
-            error: function (d) {
-                alert(d);
             }
         });
     }
