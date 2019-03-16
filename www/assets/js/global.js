@@ -1,4 +1,3 @@
-var currentDate = new Date();
 var apiKey = getApiKey();
 var apiUrl = 'https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/vapi/';
 var db = openDatabase("mgs.db", '1.0', "MGS DateBase", 2 * 1024 * 1024);;
@@ -63,6 +62,7 @@ function setParams() {
             success: function (result) {
                 if(parseInt(result)>0) {
                     window.localStorage.setItem('limit_calls', result);
+                    alert(result);
                 }
             }
         });
@@ -81,6 +81,7 @@ function setParams() {
             success: function (result) {
                 if(parseInt(result)>0) {
                     window.localStorage.setItem('tariff', result);
+                    alert(result);
                 }
             }
         });
