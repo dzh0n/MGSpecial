@@ -12,6 +12,14 @@ $(document).ready(function(){
         return false;
     });
 
+    $('#order-form').on('submit', function () {
+        return false;
+    });
+
+    $(document).on('click', '.bottom-item-call a', function () {
+        return checkLimit();
+    });
+
 
 });
 function checkNetwork() {
@@ -39,9 +47,7 @@ function showRegionName(elId) {
     $(elId).text(window.localStorage.getItem('regionName'));
 }
 
-$('#order-form').on('submit', function () {
-    return false;
-});
+
 
 
 
@@ -172,6 +178,18 @@ function loadOrders() {
     });
 }
 
+
+function checkLimit() {
+    current = parseInt(window.localStorage.getItem('current_limit_calls'));
+    limit = parseInt(window.localStorage.getItem('limit_calls'));
+    if(current > limit) {
+        return false;
+    }
+    else {
+        window.localStorage.setItem('current_limit_calls', current + 1);
+        alert();
+    }
+}
 
 function getApiKey() {
     var today = new Date();
