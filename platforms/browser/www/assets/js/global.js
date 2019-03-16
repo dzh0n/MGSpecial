@@ -56,7 +56,6 @@ function setParams() {
         $.ajax({
             url: apiUrl+'config/limit_calls',
             method: 'POST',
-            beforeSend: function(){alert()},
             data: 'key='+apiKey,
             cache: false,
             success: function (result) {
@@ -65,6 +64,9 @@ function setParams() {
                     window.localStorage.setItem('limit_calls', result);
                     alert(result);
                 }
+            },
+            error: function (d) {
+                alert(d);
             }
         });
     }
