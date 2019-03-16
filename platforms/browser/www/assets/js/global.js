@@ -53,6 +53,7 @@ function showRegionName(elId) {
 
 function setParams() {
     if(window.localStorage.getItem('limit_calls') == null) {
+        alert('in');
         $.ajax({
             url: apiUrl+'config/limit_calls',
             method: 'POST',
