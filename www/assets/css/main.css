@@ -300,3 +300,11 @@ body {
     padding: 10px 0px 0px;
     text-decoration: underline;
 }
+
+#loading {
+    position: absolute;
+    bottom: 10px;
+    text-align: center;
+    width: 100%;
+    left: 0;
+}

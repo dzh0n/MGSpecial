@@ -17,11 +17,9 @@
     <plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="~3.0.0" />
     <plugin name="cordova-plugin-statusbar" spec="~2.4.2" />
-    <plugin name="cordova-plugin-geolocation" spec="~4.0.1" />
     <plugin name="cordova-plugin-dialogs" spec="~2.0.1" />
     <plugin name="cordova-plugin-device" spec="~2.0.2" />
     <plugin name="cordova-plugin-whitelist" spec="~1.3.3" />
-    <plugin name="com.telerik.plugins.nativepagetransitions" source="npm" />
 
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Fullscreen" value="false" />
@@ -52,11 +50,9 @@
     <icon src="www/res/icons/ios/icon-1024.png" platform="ios" width="1024" height="1024" />
 
     <content src="index.html" />
-    <access origin="*" />
-    <allow-intent href="https://*/*" />
+
+    <allow-intent href="https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/*" />
     <allow-intent href="tel:*" launch-external="yes" />
-    <allow-intent href="mailto:*" />
-    <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>

@@ -76,9 +76,11 @@ document.addEventListener("deviceready", function(){
 
     document.addEventListener("offline", onOffline, false);
 
-        setTimeout(function () {
+    setParams();
+
+    /*setTimeout(function () {
         location.replace('main.html');
-    }, 3000);
+    }, 1000);*/
 
 });
 
