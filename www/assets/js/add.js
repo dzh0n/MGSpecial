@@ -84,6 +84,12 @@ document.addEventListener("deviceready", function(){
         return false;
     });
 
+    window.plugins.OneSignal
+        .startInit("545e0ae9-f360-47cb-be70-8c8bab0ac2cc")
+        .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
+        .handleNotificationOpened(notificationOpenedCallback)
+        .endInit();
+
 });
 
 function back() {

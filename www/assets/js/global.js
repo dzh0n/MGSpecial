@@ -8,6 +8,7 @@ $(document).ready(function(){
     $('.select-region-item').on('click', function(){
         window.localStorage.setItem("regionId", $(this).data('id'));
         window.localStorage.setItem("regionName", $(this).text());
+        window.plugins.OneSignal.sendTag("region", $(this).data('id'));
         location.replace('main.html');
         return false;
     });
@@ -46,7 +47,9 @@ function showRegionName(elId) {
 
 
 
-
+var notificationOpenedCallback = function(jsonData) {
+    location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
+};
 
 
 function setParams() {
@@ -175,7 +178,6 @@ function loadOrders() {
 
 function loadOrder() {
     id = window.location.hash.substring(1);
-    alert(id);
     db.transaction(function (tx) {
         tx.executeSql("SELECT * FROM Orders WHERE id="+id, [], function (tx, result) {
             for (var i = 0; i < result.rows.length; i++) {
