@@ -29,7 +29,26 @@
 
     <div class="advert-view">
 
-        <div id="advert-content"></div>
+        <div class="advert-list-item">
+            <a href="javascript:;">
+                <h2 id="order-title"></h2>
+                <div class="date-item" id="order-date"></div>
+                <div class="text-item" id="order-content"></div>
+            </a>
+            <div class="bottom-item">
+                <div class="bottom-item-user">
+                    <i class="far fa-user-circle"></i> <span id="order-client_name"></span>
+                </div>
+                <div class="bottom-item-call">
+                    <a href="tel:" id="order-client_phone"><i class="fas fa-phone"></i> Позвонить</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="advert-item-address">
+            <i class="fas fa-map-marker-alt"></i>
+            <span id="order-address"></span>
+        </div>
 
         <div id="y-map">
             <script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&onload=init"></script>
@@ -39,7 +58,6 @@
 
 
             function init() {
-
                 if(coords != '') {
 
                     var map = new ymaps.Map('y-map', {
