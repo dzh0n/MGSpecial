@@ -9,7 +9,7 @@ $(document).ready(function(){
         window.localStorage.setItem("regionId", $(this).data('id'));
         window.localStorage.setItem("regionName", $(this).text());
         window.plugins.OneSignal.sendTag("region", $(this).data('id'));
-        location.replace('main.html');
+        location.replace('index.html');
         return false;
     });
 
