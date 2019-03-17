@@ -41,6 +41,13 @@
         <splash qualifier="port-xhdpi" src="www/res/screen/android/drawable-port-xhdpi-screen.png" />
         <splash qualifier="port-xxhdpi" src="www/res/screen/android/drawable-port-xxhdpi-screen.png" />
         <splash qualifier="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
+
+        <resource-file src="locales/android/drawable-mdpi/ic_stat_onesignal_default.png" target="www/icon.png" />
+        <resource-file src="locales/android/drawable-hdpi/ic_stat_onesignal_default.png" target="www/icon.png" />
+        <resource-file src="locales/android/drawable-xhdpi/ic_stat_onesignal_default.png" target="www/icon.png" />
+        <resource-file src="locales/android/drawable-xxhdpi/ic_stat_onesignal_default.png" target="www/icon.png" />
+        <resource-file src="locales/android/drawable-xxxhdpi/ic_stat_onesignal_default.png" target="www/icon.png" />
+
     </platform>
 
     <icon src="www/res/icons/ios/icon-120.png" platform="ios" width="120" height="120" />
