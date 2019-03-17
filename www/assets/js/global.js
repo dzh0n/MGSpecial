@@ -142,13 +142,13 @@ function uploadOrders(jsonData) {
                                 value.user_id,
                                 value.coords,
                                 value.is_pub
-                            ], function () {
-                                alert(value.id);
+                            ], function (result) {
+                                alert('ins'+value.id);
                             }, null);
                         });
                     });
                     if(parseInt(jsonData.notification.payload.additionalData.orderId) > 0) {
-                        alert(jsonData.notification.payload.additionalData.orderId);
+                        alert('id'+jsonData.notification.payload.additionalData.orderId);
                         location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
                     }
 
