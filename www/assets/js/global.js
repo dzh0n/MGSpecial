@@ -47,7 +47,8 @@ function showRegionName(elId) {
 
 
 
-var notificationOpenedCallback = function(jsonData) {
+notificationOpenedCallback = function(jsonData) {
+    uploadOrders();
     location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
 };
 
@@ -109,6 +110,12 @@ function setParams() {
         })
     });
 
+
+    uploadOrders();
+
+}
+
+function uploadOrders() {
     db.transaction(function(tx) {
         tx.executeSql("DELETE FROM Orders", [], function(result){}, function(tx, error){});
     });
@@ -146,8 +153,6 @@ function setParams() {
             }
         });
     }
-
-
 }
 
 function loadOrders() {
