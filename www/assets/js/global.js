@@ -128,6 +128,7 @@ function uploadOrders(jsonData) {
             dataType: 'json',
             success: function (result) {
                 if(result != '') {
+                    alert(result);
                     $.each(result,function(index, value){
                         db.transaction(function (tx) {
                             tx.executeSql("INSERT INTO Orders (id, region_id, date_create, subject, content, address, client_name, client_phone, user_id, coords, is_pub) values(?,?,?,?,?,?,?,?,?,?,?)", [
