@@ -19,7 +19,7 @@
             <a href="javascript:;" onclick="back();"><i class="fas fa-arrow-left"></i></a>
         </div>
         <div class="header-fixed-center">
-            <h2>Заказ №65899</h2>
+            <h2>Заказ №<span id="order-id"></span></h2>
         </div>
         <div class="header-fixed-right">
             <a href="javascript:;">&nbsp;</a>
@@ -30,26 +30,24 @@
     <div class="advert-view">
 
         <div class="advert-list-item">
-            <a href="view.html">
-                <h2>Экскаватор-погрузчик гусеничный</h2>
-                <div class="date-item">28.02.2019, 15:44</div>
-                <div class="text-item">
-                    Арендую экскаватор-погрузчик гусеничный или его аналог, желательно два. По срокам нужен от пяти до семи дней.
-                </div>
+            <a href="javascript:;">
+                <h2 id="order-title"></h2>
+                <div class="date-item" id="order-date"></div>
+                <div class="text-item" id="order-content"></div>
             </a>
             <div class="bottom-item">
                 <div class="bottom-item-user">
-                    <i class="far fa-user-circle"></i> Иван Петров
+                    <i class="far fa-user-circle"></i> <span id="order-client_name"></span>
                 </div>
                 <div class="bottom-item-call">
-                    <a href="tel:+79053537741"><i class="fas fa-phone"></i> Позвонить</a>
+                    <a href="tel:" id="order-client_phone"><i class="fas fa-phone"></i> Позвонить</a>
                 </div>
             </div>
         </div>
 
         <div class="advert-item-address">
             <i class="fas fa-map-marker-alt"></i>
-            <span>Стерлитамак, ул. Техническая, 2</span>
+            <span id="order-address"></span>
         </div>
         <div id="y-map">
             <script type="text/javascript" src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&onload=init"></script>
@@ -59,30 +57,34 @@
 
 
             function init() {
-                var map = new ymaps.Map('y-map', {
-                    center: [ 53.053139867139265,56.424014883480126 ],
-                    zoom: 16,
-                    controls: ['zoomControl','typeSelector','fullscreenControl'],
-                    behaviors: ['drag']
-                });
-                var placemark = new ymaps.Placemark([ 53.053139867139265,56.424014883480126 ],
-                    {
+                if(coords != '') {
 
-                    },
-                    {
-                        iconLayout: 'default#image',
-                        iconImageHref: 'assets/img/point.png',
-                        iconImageSize: [27, 41]
+                    var map = new ymaps.Map('y-map', {
+                        center: coords.split(','),
+                        zoom: 16,
+                        controls: ['zoomControl','typeSelector','fullscreenControl'],
+                        behaviors: ['drag']
                     });
+                    var placemark = new ymaps.Placemark(coords.split(','),
+                        {
 
-                map.geoObjects.add(placemark);
-                map.setBounds(map.geoObjects.getBounds(), {
-                    checkZoomRange: true,
-                    zoomMargin: 35
-                });
+                        },
+                        {
+                            iconLayout: 'default#image',
+                            iconImageHref: 'assets/img/point.png',
+                            iconImageSize: [27, 41]
+                        });
 
-                /*if(window.innerWidth<500)
-                    map.behaviors.disable('drag');*/
+                    map.geoObjects.add(placemark);
+                    /*map.setBounds(map.geoObjects.getBounds(), {
+                        checkZoomRange: true,
+                        zoomMargin: 35
+                    });*/
+
+                    /*if(window.innerWidth<500)
+                        map.behaviors.disable('drag');*/
+                }
+
             }
         </script>
 

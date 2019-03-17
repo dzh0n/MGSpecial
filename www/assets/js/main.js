@@ -36,17 +36,6 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
 
-        var notificationOpenedCallback = function(jsonData) {
-            alert('notificationOpenedCallback: ' + JSON.stringify(jsonData));
-        };
-
-        window.plugins.OneSignal
-            .startInit("545e0ae9-f360-47cb-be70-8c8bab0ac2cc")
-            .handleNotificationOpened(notificationOpenedCallback)
-            .endInit();
-
-
-        //navigator.vibrate([1000, 1000, 3000, 1000, 2000]);
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -68,8 +57,6 @@ document.addEventListener("deviceready", function(){
     if (cordova.platformId == 'android') {
         StatusBar.backgroundColorByHexString("#FFDD0A");
     }
-
-    checkRegion();
 
     loadOrders();
 

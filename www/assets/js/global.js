@@ -1,6 +1,7 @@
 var apiKey = getApiKey();
 var apiUrl = 'https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/vapi/';
-var db = openDatabase("mgs.db", '1.0', "MGS DateBase", 2 * 1024 * 1024);;
+var db = openDatabase("mgs.db", '1.0', "MGS DateBase", 2 * 1024 * 1024);
+var coords = '';
 
 $(document).ready(function(){
 
@@ -11,9 +12,6 @@ $(document).ready(function(){
         return false;
     });
 
-    $('#order-form').on('submit', function () {
-        return false;
-    });
 
     $(document).on('click', '.bottom-item-call a', function () {
         return checkLimit();
@@ -52,19 +50,18 @@ function showRegionName(elId) {
 
 
 function setParams() {
-    if(window.localStorage.getItem('limit_calls') == null) {
-        $.ajax({
-            url: apiUrl+'config/limit_calls',
-            method: 'POST',
-            data: 'key='+apiKey,
-            cache: false,
-            success: function (result) {
-                if(parseInt(result)>0) {
-                    window.localStorage.setItem('limit_calls', result);
-                }
+
+    $.ajax({
+        url: apiUrl+'config/limit_calls',
+        method: 'POST',
+        data: 'key='+apiKey,
+        cache: false,
+        success: function (result) {
+            if(parseInt(result)>0) {
+                window.localStorage.setItem('limit_calls', result);
             }
-        });
-    }
+        }
+    });
 
     if(window.localStorage.getItem('current_limit_calls') == null) {
         window.localStorage.setItem('current_limit_calls', 0);
@@ -157,7 +154,7 @@ function loadOrders() {
             for (var i = 0; i < result.rows.length; i++) {
 
                 $('.advert-list').append('<div class="advert-list-item">\n' +
-                    '            <a href="view.html">\n' +
+                    '            <a href="view.html#'+result.rows.item(i)['id']+'">\n' +
                     '                <h2>'+result.rows.item(i)['subject']+'</h2>\n' +
                     '                <div class="date-item">'+result.rows.item(i)['date_create']+'</div>\n' +
                     '                <div class="text-item">\n'+result.rows.item(i)['content']+'</div>\n' +
@@ -176,6 +173,25 @@ function loadOrders() {
     });
 }
 
+function loadOrder() {
+    id = window.location.hash.substring(1);
+    db.transaction(function (tx) {
+        tx.executeSql("SELECT * FROM Orders WHERE id="+id, [], function (tx, result) {
+            for (var i = 0; i < result.rows.length; i++) {
+                $('#order-id').text(result.rows.item(i)['id']);
+                $('#order-title').text(result.rows.item(i)['subject']);
+                $('#order-date').text(result.rows.item(i)['date_create']);
+                $('#order-content').text(result.rows.item(i)['content']);
+                $('#order-client_name').text(result.rows.item(i)['client_name']);
+                $('#order-client_phone').attr('href', 'tel:'+result.rows.item(i)['client_phone']);
+                $('#order-address').text(result.rows.item(i)['address']);
+                if(result.rows.item(i)['coords'] != '') coords = result.rows.item(i)['coords'];
+            }
+        }, null)
+    });
+}
+
+
 
 function checkLimit() {
     current = parseInt(window.localStorage.getItem('current_limit_calls'));
@@ -185,7 +201,7 @@ function checkLimit() {
     }
     else {
         window.localStorage.setItem('current_limit_calls', current + 1);
-        alert();
+        alert(window.localStorage.getItem('current_limit_calls'));
     }
 }
 

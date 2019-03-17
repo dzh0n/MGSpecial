@@ -45,6 +45,8 @@ var app = {
             .handleNotificationOpened(notificationOpenedCallback)
             .endInit();
 
+        window.plugins.OneSignal.sendTag("region", "1");
+
 
         //navigator.vibrate([1000, 1000, 3000, 1000, 2000]);
     },
@@ -77,6 +79,8 @@ document.addEventListener("deviceready", function(){
     document.addEventListener("offline", onOffline, false);
 
     setParams();
+
+    checkRegion();
 
     setTimeout(function () {
         location.replace('main.html');

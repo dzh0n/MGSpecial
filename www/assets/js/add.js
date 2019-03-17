@@ -67,10 +67,27 @@ document.addEventListener("deviceready", function(){
         back();
     }, false);
 
+    $('#order-form').on('submit', function () {
+        var form = $(this);
+        $.ajax({
+            url: apiUrl+'orders/addspecial',
+            method: 'POST',
+            data: form.serialize()+'&key='+apiKey,
+            cache: false,
+            success: function (result) {
+                if(result == 'success') {
+
+                }
+            }
+        });
+        return false;
+    });
+
 });
 
 function back() {
-    navigator.app.backHistory();
+    location.replace('main.html');
+    //navigator.app.backHistory();
 }
 
 
