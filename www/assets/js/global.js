@@ -92,9 +92,7 @@ function setParams() {
     });*/
 
     db.transaction(function (tx) {
-        tx.executeSql("SELECT COUNT(*) FROM Orders", [], function (result) {
-
-        }, function (tx, error) {
+        tx.executeSql("SELECT COUNT(*) FROM Orders", [], uploadOrders, function (tx, error) {
             tx.executeSql("CREATE TABLE Orders (\n" +
                 "  id INT UNIQUE,\n" +
                 "  region_id INT,\n" +
@@ -106,12 +104,12 @@ function setParams() {
                 "  client_phone TEXT,\n" +
                 "  user_id INT,\n" +
                 "  coords TEXT,\n" +
-                "  is_pub INT)" , [], null, null);
+                "  is_pub INT)" , [], uploadOrders, null);
         })
     });
 
 
-    uploadOrders();
+
 
 }
 
@@ -158,7 +156,7 @@ function uploadOrders() {
 function loadOrders() {
     $('.advert-list').html('');
     db.transaction(function (tx) {
-        tx.executeSql("SELECT * FROM Orders", [], function (tx, result) {
+        tx.executeSql("SELECT * FROM Orders ORDER BY id DESC", [], function (tx, result) {
             for (var i = 0; i < result.rows.length; i++) {
 
                 $('.advert-list').append('<div class="advert-list-item">\n' +
