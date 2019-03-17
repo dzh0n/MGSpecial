@@ -36,7 +36,11 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
 
-
+        window.plugins.OneSignal
+            .startInit("545e0ae9-f360-47cb-be70-8c8bab0ac2cc")
+            .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
+            .handleNotificationOpened(notificationOpenedCallback)
+            .endInit();
 
     },
     // Update DOM on a Received Event
@@ -71,11 +75,7 @@ document.addEventListener("deviceready", function(){
 
     checkRegion();
 
-    window.plugins.OneSignal
-        .startInit("545e0ae9-f360-47cb-be70-8c8bab0ac2cc")
-        .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
-        .handleNotificationOpened(notificationOpenedCallback)
-        .endInit();
+
 
     setTimeout(function () {
         location.replace('main.html');

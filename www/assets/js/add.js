@@ -36,7 +36,11 @@ var app = {
     // function, we must explicitly call 'app.receivedEvent(...);'
     onDeviceReady: function() {
 
-
+        window.plugins.OneSignal
+            .startInit("545e0ae9-f360-47cb-be70-8c8bab0ac2cc")
+            .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
+            .handleNotificationOpened(notificationOpenedCallback)
+            .endInit();
 
         //navigator.vibrate([1000, 1000, 3000, 1000, 2000]);
     },
@@ -83,11 +87,7 @@ document.addEventListener("deviceready", function(){
         return false;
     });
 
-    window.plugins.OneSignal
-        .startInit("545e0ae9-f360-47cb-be70-8c8bab0ac2cc")
-        .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
-        .handleNotificationOpened(notificationOpenedCallback)
-        .endInit();
+
 
 });
 
