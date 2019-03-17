@@ -175,6 +175,7 @@ function loadOrders() {
 
 function loadOrder() {
     id = window.location.hash.substring(1);
+    alert(id);
     db.transaction(function (tx) {
         tx.executeSql("SELECT * FROM Orders WHERE id="+id, [], function (tx, result) {
             for (var i = 0; i < result.rows.length; i++) {

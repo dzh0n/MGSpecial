@@ -38,7 +38,7 @@ var app = {
 
         var notificationOpenedCallback = function(jsonData) {
             location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
-            //alert('notificationOpenedCallback: ' + JSON.stringify(jsonData.notification.payload.additionalData.orderId));
+            alert('notificationOpenedCallback: ' + jsonData.notification.payload.additionalData.orderId);
         };
 
         window.plugins.OneSignal
