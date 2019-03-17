@@ -76,7 +76,7 @@ document.addEventListener("deviceready", function(){
         $.ajax({
             url: apiUrl+'orders/addspecial',
             method: 'POST',
-            data: form.serialize()+'&key='+apiKey,
+            data: form.serialize()+'&key='+apiKey+'&region_id='+window.localStorage.getItem('regionId'),
             cache: false,
             success: function (result) {
                 if(result == 'success') {

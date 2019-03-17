@@ -123,7 +123,7 @@ function uploadOrders(jsonData) {
             url: apiUrl+'orders/special',
             method: 'POST',
             async: false,
-            data: 'key='+apiKey+'&regionId='+window.localStorage.getItem('regionId'),
+            data: 'key='+apiKey+'&region_id='+window.localStorage.getItem('regionId'),
             cache: false,
             dataType: 'json',
             success: function (result) {
@@ -146,6 +146,7 @@ function uploadOrders(jsonData) {
                         });
                     });
                     if(parseInt(jsonData.notification.payload.additionalData.orderId) > 0) {
+                        alert();
                         location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
                     }
 

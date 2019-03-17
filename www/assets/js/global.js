@@ -123,12 +123,11 @@ function uploadOrders(jsonData) {
             url: apiUrl+'orders/special',
             method: 'POST',
             async: false,
-            data: 'key='+apiKey+'&regionId='+window.localStorage.getItem('regionId'),
+            data: 'key='+apiKey+'&region_id='+window.localStorage.getItem('regionId'),
             cache: false,
             dataType: 'json',
             success: function (result) {
                 if(result != '') {
-                    alert(result);
                     $.each(result,function(index, value){
                         db.transaction(function (tx) {
                             tx.executeSql("INSERT INTO Orders (id, region_id, date_create, subject, content, address, client_name, client_phone, user_id, coords, is_pub) values(?,?,?,?,?,?,?,?,?,?,?)", [
@@ -147,6 +146,7 @@ function uploadOrders(jsonData) {
                         });
                     });
                     if(parseInt(jsonData.notification.payload.additionalData.orderId) > 0) {
+                        alert();
                         location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
                     }
 
