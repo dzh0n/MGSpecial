@@ -145,7 +145,7 @@ function uploadOrders(jsonData) {
                                 value.coords,
                                 value.is_pub
                             ], function (result) {
-                                alert('ins' + value.id);
+
                             }, null);
                         });
                     },null, function(){
@@ -153,13 +153,6 @@ function uploadOrders(jsonData) {
                             location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
                         }
                     });
-
-
-                    //if(parseInt(jsonData.notification.payload.additionalData.orderId) > 0) {
-                    if(1 > 0) {
-                      //  alert('id'+jsonData.notification.payload.additionalData.orderId);
-                       // location.replace('view.html#'+1);
-                    }
 
                 }
 
