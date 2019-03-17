@@ -112,7 +112,7 @@ function setParams() {
 
 }
 
-function uploadOrders(showOrder) {
+function uploadOrders(jsonData) {
     db.transaction(function(tx) {
         tx.executeSql("DELETE FROM Orders", [], function(result){}, function(tx, error){});
     });
@@ -145,8 +145,10 @@ function uploadOrders(showOrder) {
                             ], null, null);
                         });
                     });
-                    if(parseInt(jsonData.notification.payload.additionalData.orderId) > 0)
+                    if(parseInt(jsonData.notification.payload.additionalData.orderId) > 0) {
                         location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
+                    }
+
                 }
 
             }

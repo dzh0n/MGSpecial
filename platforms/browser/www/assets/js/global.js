@@ -48,8 +48,7 @@ function showRegionName(elId) {
 
 
 notificationOpenedCallback = function(jsonData) {
-    uploadOrders();
-    location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
+    uploadOrders(jsonData);
 };
 
 
@@ -113,7 +112,7 @@ function setParams() {
 
 }
 
-function uploadOrders() {
+function uploadOrders(jsonData) {
     db.transaction(function(tx) {
         tx.executeSql("DELETE FROM Orders", [], function(result){}, function(tx, error){});
     });
@@ -146,6 +145,10 @@ function uploadOrders() {
                             ], null, null);
                         });
                     });
+                    if(parseInt(jsonData.notification.payload.additionalData.orderId) > 0) {
+                        location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
+                    }
+
                 }
 
             }
