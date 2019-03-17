@@ -75,6 +75,7 @@ document.addEventListener("deviceready", function(){
             data: form.serialize()+'&key='+apiKey,
             cache: false,
             success: function (result) {
+                alert(result);
                 if(result == 'success') {
 
                 }
