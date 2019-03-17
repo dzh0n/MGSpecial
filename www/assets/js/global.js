@@ -128,8 +128,10 @@ function uploadOrders(jsonData) {
             dataType: 'json',
             success: function (result) {
                 if(result != '') {
-                    $.each(result,function(index, value){
-                        db.transaction(function (tx) {
+                    count = 1;
+
+                    db.transaction(function (tx) {
+                        $.each(result, function (index, value) {
                             tx.executeSql("INSERT INTO Orders (id, region_id, date_create, subject, content, address, client_name, client_phone, user_id, coords, is_pub) values(?,?,?,?,?,?,?,?,?,?,?)", [
                                 value.id,
                                 value.region_id,
@@ -143,13 +145,20 @@ function uploadOrders(jsonData) {
                                 value.coords,
                                 value.is_pub
                             ], function (result) {
-                                alert('ins'+value.id);
+                                alert('ins' + value.id);
                             }, null);
                         });
+                    },null, function(){
+                        if(parseInt(jsonData.notification.payload.additionalData.orderId) > 0) {
+                            location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
+                        }
                     });
-                    if(parseInt(jsonData.notification.payload.additionalData.orderId) > 0) {
-                        alert('id'+jsonData.notification.payload.additionalData.orderId);
-                        location.replace('view.html#'+jsonData.notification.payload.additionalData.orderId);
+
+
+                    //if(parseInt(jsonData.notification.payload.additionalData.orderId) > 0) {
+                    if(1 > 0) {
+                      //  alert('id'+jsonData.notification.payload.additionalData.orderId);
+                       // location.replace('view.html#'+1);
                     }
 
                 }
