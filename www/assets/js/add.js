@@ -80,7 +80,15 @@ document.addEventListener("deviceready", function(){
             cache: false,
             success: function (result) {
                 if(result == 'success') {
-
+                    $('#order-form')[0].reset();
+                    navigator.notification.alert(
+                        'Ваш заказ успешно создан и в ближайшее время станет доступен. Ожидайте поступление звонков от исполнителей.',  // message
+                        function () {
+                            location.replace('main.html')
+                        },         // callback
+                        'Заказ создан',            // title
+                        'Ok'                  // buttonName
+                    );
                 }
             }
         });

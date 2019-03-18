@@ -5,6 +5,11 @@ var coords = '';
 
 $(document).ready(function(){
 
+    $('.close-slideMenu').on('click', function () {
+        $(".slideMenu").animate({width:'toggle'},350);
+        //$('.slideMenu').hide();
+    });
+
     $('.select-region-item').on('click', function(){
         window.localStorage.setItem("regionId", $(this).data('id'));
         window.localStorage.setItem("regionName", $(this).text());
@@ -15,11 +20,34 @@ $(document).ready(function(){
 
 
     $(document).on('click', '.bottom-item-call a', function () {
-        return checkLimit();
+        return checkLimit($(this).data('tel'));
     });
 
 
 });
+
+function openMenu() {
+    $(".slideMenu").animate({width:'toggle'},350);
+}
+
+function notifications() {
+    navigator.notification.confirm(
+        'Хотели бы вы получать уведомления о новых заказах в вашем регионе?',
+        function (buttonIndex) {
+            if(buttonIndex == 1) {
+                window.plugins.OneSignal.sendTag("push", "1");
+                window.localStorage.setItem("getPush", 1);
+            }
+            else {
+                window.plugins.OneSignal.sendTag("push", "0");
+                window.localStorage.setItem("getPush", 0);
+            }
+        },
+        'Уведомления о новых заказах',
+        ['Да','Нет']
+    );
+}
+
 function checkNetwork() {
 
 }
@@ -178,7 +206,7 @@ function loadOrders() {
                     '                    <i class="far fa-user-circle"></i> '+result.rows.item(i)['client_name']+'\n' +
                     '                </div>\n' +
                     '                <div class="bottom-item-call">\n' +
-                    '                    <a href="tel:'+result.rows.item(i)['client_phone']+'"><i class="fas fa-phone"></i> Позвонить</a>\n' +
+                    '                    <a href="javascript:;" data-tel="'+result.rows.item(i)['client_phone']+'"><i class="fas fa-phone"></i> Позвонить</a>\n' +
                     '                </div>\n' +
                     '            </div>\n' +
                     '        </div>');
@@ -197,9 +225,9 @@ function loadOrder() {
                 $('#order-date').text(result.rows.item(i)['date_create']);
                 $('#order-content').text(result.rows.item(i)['content']);
                 $('#order-client_name').text(result.rows.item(i)['client_name']);
-                $('#order-client_phone').attr('href', 'tel:'+result.rows.item(i)['client_phone']);
+                $('#order-client_phone').data('tel', result.rows.item(i)['client_phone']);
                 $('#order-address').text(result.rows.item(i)['address']);
-                if(result.rows.item(i)['coords'] != '') coords = result.rows.item(i)['coords'];
+                if(result.rows.item(i)['coords'] != '') {coords = result.rows.item(i)['coords']; init()}
             }
         }, null)
     });
@@ -207,15 +235,16 @@ function loadOrder() {
 
 
 
-function checkLimit() {
+function checkLimit(tel) {
     current = parseInt(window.localStorage.getItem('current_limit_calls'));
     limit = parseInt(window.localStorage.getItem('limit_calls'));
-    if(current > limit) {
+    if(current >= limit) {
+        location.replace('limit.html');
         return false;
     }
     else {
         window.localStorage.setItem('current_limit_calls', current + 1);
-        alert(window.localStorage.getItem('current_limit_calls'));
+        window.open('tel://'+tel,'_system');
     }
 }
 

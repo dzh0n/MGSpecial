@@ -64,7 +64,9 @@ document.addEventListener("deviceready", function(){
 
     loadOrders();
 
-
+    if(window.localStorage.getItem('getPush') == null) {
+        notifications();
+    }
 
     document.addEventListener("offline", onOffline, false);
 
