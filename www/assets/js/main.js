@@ -64,7 +64,10 @@ document.addEventListener("deviceready", function(){
 
     loadOrders();
 
-    if(window.localStorage.getItem('getPush') == null) {
+    if(window.localStorage.getItem('getPush') != null && window.localStorage.getItem('getPush') == 1) {
+        $('.header-fixed-right a').append('<i class="fas fa-check-circle"></i>');
+    }
+    else {
         notifications();
     }
 

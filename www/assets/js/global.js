@@ -42,6 +42,7 @@ function notifications() {
                 window.plugins.OneSignal.sendTag("push", "0");
                 window.localStorage.setItem("getPush", 0);
             }
+            location.reload();
         },
         'Уведомления о новых заказах',
         ['Да','Нет']

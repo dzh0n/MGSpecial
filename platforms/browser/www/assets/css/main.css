@@ -373,3 +373,15 @@ body {
 .slideMenu-content ul li:nth-child(1) a {
     font-size: 22px;
 }
+.header-fixed-right a {
+    position: relative;
+}
+.header-fixed-right a > i.fa-check-circle {
+    color: green;
+    /*display: none;*/
+    position: absolute;
+    font-size: 12px;
+    top: 0;
+    left: 0;
+    margin: 27px 0px 0px 27px;
+}
