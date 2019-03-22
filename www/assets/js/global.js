@@ -6,8 +6,9 @@ var coords = '';
 $(document).ready(function(){
 
     $('.close-slideMenu').on('click', function () {
-        $(".slideMenu").animate({width:'toggle'},350);
+        //$(".slideMenu").animate({width:'toggle'},350);
         //$('.slideMenu').hide();
+        $('.slideMenu').removeClass('slideInLeft').addClass('slideOutLeft');//.delay(2000).hide();
     });
 
     $('.select-region-item').on('click', function(){
@@ -24,10 +25,27 @@ $(document).ready(function(){
     });
 
 
+   /* $("body").swipe( {
+        //Generic swipe handler for all directions
+        swipe:function(event, direction, distance, duration, fingerCount, fingerData) {
+            //$(this).text("You swiped " + direction );
+            if(direction = 'right'){
+                $('.slideMenu').removeClass('slideOutLeft').addClass('slideInLeft animated').show();
+            }
+            if(direction == 'left') {
+                $('.slideMenu').removeClass('slideInLeft').addClass('slideOutLeft');//.delay(2000).hide();
+            }
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+        threshold:0
+    });*/
+
+
 });
 
 function openMenu() {
-    $(".slideMenu").animate({width:'toggle'},350);
+   // $(".slideMenu").animate({width:'toggle'},350);
+    $('.slideMenu').removeClass('slideOutLeft').addClass('slideInLeft animated').show();
 }
 
 function notifications() {
