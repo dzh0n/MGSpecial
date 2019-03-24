@@ -468,3 +468,34 @@ body {
     font-size: 14px;
     padding-bottom: 20px;
 }
+
+.balance-history {
+    padding: 20px;
+}
+.balance-history h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.balance-history table {
+    width: 100%;
+    border-spacing: 0;
+}
+.balance-history table tr th {
+    padding: 15px;
+    text-transform: uppercase;
+    /*background-color: #fdfafa;*/
+    background-color: #ececec;
+    color: #737373;
+    text-align: left;
+}
+.balance-history table tr td {
+    padding: 15px;
+    font-weight: 500;
+    font-size: 14px;
+}
+.balance-history table tbody tr:nth-child(2n) td {
+    background-color: #fdfafa;
+}
+.balance-history table tr th:last-child, .balance-history table tr td:last-child {
+    text-align: right;
+}

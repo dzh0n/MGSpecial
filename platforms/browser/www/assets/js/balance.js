@@ -6,6 +6,7 @@ function back() {
 $(document).ready(function(){
     $('.balance-main-current span').text(window.localStorage.getItem('userBalance'));
     $('#userId').val(window.localStorage.getItem('userId'));
+    refreshBalance();
 });
 
 $('#balance-form').on('submit', function () {
@@ -32,9 +33,11 @@ $('#balance-form').on('submit', function () {
 
                 // attach listener to loadstart
                 ref.addEventListener('loadstart', function(event) {
-                    var urlSuccessPage = "https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/pay/success";
-                    if (event.url == urlSuccessPage) {
+                   // alert(event.url.split('?')[0]);
+                    var urlSuccessPage = "https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/vapi/balance/success";
+                    if (event.url.split('?')[0] == urlSuccessPage) {
                         ref.close();
+                        refreshBalance();
                     }
                 });
             }
@@ -42,3 +45,18 @@ $('#balance-form').on('submit', function () {
     });
     return false;
 });
+
+function refreshBalance() {
+    $.ajax({
+        type: "POST",
+        url: apiUrl+'balance/info',
+        data: "userId="+window.localStorage.getItem('userId')+'&key='+apiKey,
+        dataType: 'json',
+        success: function(data){
+            $('.balance-main-current span').text(parseFloat(data.balance));
+            window.localStorage.setItem('userBalance', parseFloat(data.balance))
+            if(data.history!='')
+                $('#history tbody').html(data.history);
+        }
+    });
+}
