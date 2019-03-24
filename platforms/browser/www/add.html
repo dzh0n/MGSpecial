@@ -27,7 +27,7 @@
     </div>
     <!-- header -->
     <form id="order-form" method="post">
-        <input type="hidden" name="user_id" value="">
+        <input type="hidden" name="user_id" id="userId" value="">
     <div class="order-form">
         <div class="order-form-row">
             <label>Мне нужно (название техники ил услуги)</label>
@@ -52,14 +52,14 @@
     <div class="order-form">
         <div class="order-form-row">
             <label>Контактное лицо / Организация</label>
-            <input type="text" name="client_name" required placeholder="Ваше имя или название организации">
+            <input type="text" name="client_name" id="client_name" required placeholder="Ваше имя или название организации">
         </div>
     </div>
 
     <div class="order-form">
         <div class="order-form-row">
             <label>Контактный телефон</label>
-            <input type="text" name="client_phone" required placeholder="Укажите ваш контактный телефон">
+            <input type="tel" class="phone-mask" name="client_phone" id="client_phone" required placeholder="Укажите ваш контактный телефон">
         </div>
     </div>
 
@@ -76,6 +76,7 @@
 
 <script type="text/javascript" src="cordova.js"></script>
 <script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/libs/jquery.mask.min.js"></script>
 <script type="text/javascript" src="assets/js/global.js"></script>
 <script type="text/javascript" src="assets/js/add.js"></script>
 <script type="text/javascript">

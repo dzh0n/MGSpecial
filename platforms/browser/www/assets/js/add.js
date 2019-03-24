@@ -105,6 +105,27 @@ function back() {
 }
 
 
+$(document).ready(function(){
+    $('input.phone-mask').mask('+7 (000) 000-00-00', {clearIfNotMatch: true});
+    userId = userId = window.localStorage.getItem('userId');
+    if(userId) {
+        $.ajax({
+            type: "POST",
+            url: "https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/vapi/user/info/",
+            data: "id="+userId+'&key='+apiKey,
+            dataType: 'json',
+            success: function(data){
+                $('#userId').val(userId);
+                $('#client_name').val(data.name);
+                $('#client_phone').val(data.phone);
+                //$('#email').val(data.email);
+                //$('#phone').val(data.phone);
+            }
+        });
+    }
+});
+
+
 
 
 
