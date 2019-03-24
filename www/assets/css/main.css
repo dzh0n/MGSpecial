@@ -499,3 +499,69 @@ body {
 .balance-history table tr th:last-child, .balance-history table tr td:last-child {
     text-align: right;
 }
+
+.ajax_sms {
+    color: #000;
+    font-size: 15px;
+    display: inline-block;
+    margin-top: 13px;
+}
+
+/* checkbox */
+.checkbox input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    margin: 10px 0 0 20px;
+}
+.checkbox__text {
+    position: relative;
+    padding: 0 0 0 30px;
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1;
+}
+.checkbox__text:before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    background: #FFFFFF;
+    border: #000 2px solid;
+    transition: .2s;
+    border-radius: 3px;
+}
+.checkbox__text:after {
+    position: absolute;
+    font-family: "Font Awesome 5 Free";
+    content: "\f00c";
+    font-weight: 900;
+    top: -1px;
+    left: 5px;
+    width: 18px;
+    height: 18px;
+    color: #FFFFFF;
+    transition: .2s;
+    font-size: 14px;
+}
+.checkbox input:checked + .checkbox__text:before {
+    background: #000;
+}
+.checkbox input:checked + .checkbox__text:after {
+    /*left: 26px;*/
+}
+.checkbox input:focus + .checkbox__text:before {
+    /*box-shadow: inset 0 2px 3px rgba(0,0,0,.2), 0 0 0 3px rgba(255,255,0,.7);*/
+}
+/* end checkbox */
+
+
+.form-link {
+    text-align: center;
+    margin: 0 auto;
+    color: inherit;
+    font-size: 16px;
+}
