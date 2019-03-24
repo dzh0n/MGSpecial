@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no"/>
+    <title></title>
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/fonts/roboto/roboto.css" rel="stylesheet">
+    <link href="assets/fonts/fontawesome/css/all.min.css" rel="stylesheet">
+</head>
+<body class="add-page animated fadeIn">
+
+<div class="wrapper">
+    <!-- header -->
+    <div class="header-fixed">
+        <div class="header-fixed-left">
+            <a href="javascript:;" onclick="back();"><i class="fas fa-arrow-left"></i></a>
+        </div>
+        <div class="header-fixed-center">
+            <h2>Регистрация</h2>
+        </div>
+        <div class="header-fixed-right">
+            <a href="javascript:;" onclick="registration();"><i class="fas fa-check"></i></a>
+        </div>
+    </div>
+    <!-- header -->
+
+    <form id="reg-form" method="post">
+        <input type="hidden" name="regionId" id="regionId" value="">
+        <div class="order-form">
+            <div class="order-form-row">
+                <label>ФИО или Наименование организации</label>
+                <input type="text" name="name" id="name" required placeholder="Ваше имя или наименование организации">
+            </div>
+            <div class="order-form-row">
+                <label>Номер телефона</label>
+                <input type="tel" class="phone-mask" id="phone" name="phone" required placeholder="Ваш контактный телефон">
+            </div>
+            <div class="order-form-row">
+                <label>Email</label>
+                <input type="email" name="email" id="email" required placeholder="Ваш email-адрес">
+            </div>
+            <div class="order-form-row">
+                <label>Пароль</label>
+                <input type="password" name="password" id="password" required placeholder="Придумайте пароль для входа">
+            </div>
+            <div class="order-form-row">
+                <label>Код подтверждения из SMS</label>
+                <input name="sms_code" id="sms_code" type="hidden" value="">
+                <input type="text" name="sms_code_in" id="sms_code_in" required placeholder="Введите код полученный в смс сообщении">
+                <a class="ajax_sms" href="#" id="yt0">Получить код</a>
+            </div>
+
+            <div class="order-form-row">
+                <label class="checkbox">
+                    <input name="User[check]" id="User_check" value="1" checked="checked" type="checkbox" disabled>
+                    <div class="checkbox__text">Регистрируясь, я принимаю все условия договора-оферты по использованию сервиса</div>
+                </label>
+            </div>
+
+            <div class="order-form-row">
+                <label class="checkbox">
+                    <input name="User[personal_data]" id="User_personal_data" value="1" checked="checked" type="checkbox" disabled>
+                    <div class="checkbox__text">Регистрируясь, я соглашаюсь на обработку моих персональных данных</div>
+                </label>
+            </div>
+
+            <div class="order-form-row" style="text-align: center">
+                <a href="https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/docs/soglashenie.pdf" class="form-link" target="_system">Договор оферты</a>
+            </div>
+
+
+        </div>
+
+        <button id="submit" style="display: none;"></button>
+    </form>
+
+
+
+
+
+</div><!-- .wrapper -->
+
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/libs/jquery.mask.min.js"></script>
+<script type="text/javascript" src="assets/js/global.js"></script>
+<script type="text/javascript" src="assets/js/registration.js"></script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+</body>
+</html>
