@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no"/>
+    <title></title>
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <link href="assets/fonts/roboto/roboto.css" rel="stylesheet">
+    <link href="assets/fonts/fontawesome/css/all.min.css" rel="stylesheet">
+</head>
+<body class="add-page animated fadeIn">
+
+<div class="wrapper">
+    <!-- header -->
+    <div class="header-fixed">
+        <div class="header-fixed-left">
+            <a href="javascript:;" onclick="back();"><i class="fas fa-arrow-left"></i></a>
+        </div>
+        <div class="header-fixed-center">
+            <h2>Настройки</h2>
+        </div>
+        <div class="header-fixed-right">
+            <a href="javascript:;" onclick="saveSettings();"><i class="fas fa-check"></i></a>
+        </div>
+    </div>
+    <!-- header -->
+
+    <form id="settings-form" method="post">
+        <input type="hidden" name="userId" id="userId" value="">
+        <div class="order-form">
+            <div class="order-form-row">
+                <label>ФИО или Наименование организации</label>
+                <input type="text" name="name" id="name" required placeholder="">
+            </div>
+            <div class="order-form-row">
+                <label>Номер телефона</label>
+                <input type="tel" class="phone-mask" readonly id="phone" name="phone" required placeholder="+7 (***) ***-**-**">
+            </div>
+            <div class="order-form-row">
+                <label>Email</label>
+                <input type="email" name="email" id="email" required placeholder="">
+            </div>
+            <div class="order-form-row">
+                <label>Новый пароль</label>
+                <input type="password" name="newPassword" id="newPassword" required placeholder="">
+            </div>
+            <div class="order-form-row">
+                <label>Повтор пароля</label>
+                <input type="password" name="repeatPassword" id="repeatPassword" required placeholder="">
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+</div><!-- .wrapper -->
+
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/libs/jquery.mask.min.js"></script>
+<script type="text/javascript" src="assets/js/global.js"></script>
+<script type="text/javascript" src="assets/js/settings.js"></script>
+<script type="text/javascript">
+    app.initialize();
+</script>
+</body>
+</html>
