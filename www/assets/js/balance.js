@@ -26,7 +26,17 @@ $('#balance-form').on('submit', function () {
                 );
             }
             if(data.result=='success'){
-                window.open(data.url, '_blank');
+               // window.open(data.url, '_blank');
+                // open InAppBrowser w/out the location bar
+                var ref = window.open(data.url, '_blank', 'location=no');
+
+                // attach listener to loadstart
+                ref.addEventListener('loadstart', function(event) {
+                    var urlSuccessPage = "https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/pay/success";
+                    if (event.url == urlSuccessPage) {
+                        ref.close();
+                    }
+                });
             }
         }
     });
