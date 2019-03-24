@@ -66,28 +66,20 @@
     <div class="slideMenu-content">
         <!--<div class="slideMenu-header">Новый пользователь</div>-->
         <ul class="if-login-menu">
-            <li><a href="javascript:;"><i class="fas fa-user-tie"></i> <span id="userName">Плотников Евгений</span></a></li>
+            <li><a href="javascript:;"><i class="fas fa-user-tie"></i> <span id="userName"></span></a></li>
             <li><a href="add.html"><i class="fas fa-plus-square"></i> Создать заказ</a></li>
-            <li><a href="javascript:;"><i class="fas fa-map-marker-alt"></i> <span id="regionName"></span></a> </li>
-            <li><a href="balance.html"><i class="far fa-money-bill-alt"></i> Баланс: <strong><span id="userBalance">0</span> ₽</strong></a></li>
-            <!-- <li><a href="notifications.html"><i class="far fa-bell"></i> Уведомления</a></li>-->
-            <li><a href="settings.html"><i class="fas fa-sliders-h"></i> Настройки</a></li>
-            <li><a href="javascript:;" onclick="logout();"><i class="fas fa-sign-out-alt"></i> Выйти</a></li>
+            <li><a href="regions.html"><i class="fas fa-map-marker-alt"></i> <span id="regionName"></span></a> </li>
+
+            <li class="no-login"><a href="registration.html"><i class="fas fa-user-plus"></i> Зарегистрироваться</a> </li>
+            <li class="no-login"><a href="login.html"><i class="fas fa-sign-in-alt"></i> Войти</a> </li>
+            <li class="no-login"><a href="remind.html"><i class="fas fa-user-secret"></i> Забыли пароль?</a> </li>
+
+            <li class="yes-login"><a href="balance.html"><i class="far fa-money-bill-alt"></i> Баланс: <strong><span id="userBalance">0</span> ₽</strong></a></li>
+            <li class="yes-login"><a href="settings.html"><i class="fas fa-sliders-h"></i> Настройки</a></li>
+            <li class="yes-login"><a href="javascript:;" onclick="logout();"><i class="fas fa-sign-out-alt"></i> Выйти</a></li>
             <li>&nbsp;</li>
             <li>&nbsp;</li>
-            <li><a href="#" onclick="window.open('tel://88002347102','_system')"><i class="fas fa-mobile-alt"></i> <span style="">8 800 2-347-102</span></a></li>
-            <li><a onclick="window.open('https://www.youtube.com/channel/UCmlhVUOuTMvlzSNBDQt_zcg', '_system');" href="#" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
-            <li><a onclick="window.open('https://www.youtube.com/watch?v=F87x36lsMJ0', '_system');"><i class="far fa-question-circle"></i> Как работает сервис</a></li>
-        </ul>
-        <ul class="no-login-menu">
-            <li><a href="javascript:;">Новый пользователь</a></li>
-            <li><a href="javascript:;"><i class="fas fa-map-marker-alt"></i> <span id="regionName"></span></a> </li>
-            <li><a href="add.html"><i class="fas fa-plus-square"></i> Создать заказ</a></li>
-            <li><a href="registration.html"><i class="fas fa-user-plus"></i> Зарегистрироваться</a> </li>
-            <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Войти</a> </li>
-            <li><a href="remind.html"><i class="fas fa-user-secret"></i> Забыли пароль?</a> </li>
-            <li>&nbsp;</li>
-            <li>&nbsp;</li>
+            <li><a href="chats.html"><i class="far fa-comments"></i> Чаты для водителей</a></li>
             <li><a href="#" onclick="window.open('tel://88002347102','_system')"><i class="fas fa-mobile-alt"></i> <span style="">8 800 2-347-102</span></a></li>
             <li><a onclick="window.open('https://www.youtube.com/channel/UCmlhVUOuTMvlzSNBDQt_zcg', '_system');" href="#" target="_blank"><i class="fab fa-youtube"></i> YouTube</a></li>
             <li><a onclick="window.open('https://www.youtube.com/watch?v=F87x36lsMJ0', '_system');"><i class="far fa-question-circle"></i> Как работает сервис</a></li>

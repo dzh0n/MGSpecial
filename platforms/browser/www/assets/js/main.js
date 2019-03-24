@@ -71,6 +71,17 @@ document.addEventListener("deviceready", function(){
         notifications();
     }
 
+    if(window.localStorage.getItem("regionName")!=null) {
+        $('#regionName').text(window.localStorage.getItem("regionName"));
+    }
+
+    if(window.localStorage.getItem("userId")!=null) {
+        $('.no-login').hide();
+        $('.yes-login').show();
+        $('#userName').text(window.localStorage.getItem("userName"));
+        $('#userBalance').text(window.localStorage.getItem("userBalance"));
+    }
+
     document.addEventListener("offline", onOffline, false);
 
     document.addEventListener("backbutton", function(e){

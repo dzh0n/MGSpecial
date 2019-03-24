@@ -284,3 +284,8 @@ function getApiKey() {
     today = dd + mm + yyyy;
     return today;
 }
+
+function logout() {
+    window.localStorage.removeItem('userId');
+    window.location = 'main.html';
+}
