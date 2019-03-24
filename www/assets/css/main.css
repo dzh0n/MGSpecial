@@ -565,3 +565,26 @@ body {
     color: inherit;
     font-size: 16px;
 }
+
+.limit-message {
+    padding: 20px;
+    text-align: center;
+}
+.limit-description {
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+.limit-message h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.limit-tariff {
+    font-size: 36px;
+    font-weight: 500;
+    white-space: nowrap;
+    padding-right: 15px;
+    text-align: center;
+    padding-bottom: 5px;
+    line-height: 1;
+
+}

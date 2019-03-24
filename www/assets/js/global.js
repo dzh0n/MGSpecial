@@ -257,13 +257,15 @@ function loadOrder() {
 function checkLimit(tel) {
     current = parseInt(window.localStorage.getItem('current_limit_calls'));
     limit = parseInt(window.localStorage.getItem('limit_calls'));
+    //window.localStorage.setItem('current_limit_calls', 1);
+    //alert(current);
     if(current >= limit) {
         location.replace('limit.html');
         return false;
     }
     else {
         window.localStorage.setItem('current_limit_calls', current + 1);
-        window.open('tel://'+tel,'_system');
+        window.open('tel:'+tel,'_system');
     }
 }
 

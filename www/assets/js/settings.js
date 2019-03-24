@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $('input.phone-mask').mask('+7 (000) 000-00-00', {clearIfNotMatch: true});
 
-    userId = userId = window.localStorage.getItem('userId');
+    userId = window.localStorage.getItem('userId');
     if(userId) {
         $.ajax({
             type: "POST",
