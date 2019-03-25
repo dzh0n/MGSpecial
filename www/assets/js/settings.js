@@ -39,6 +39,7 @@ $('#settings-form').on('submit', function () {
         success: function(msg){
             if(msg=='success') {
                 // SpinnerDialog.hide();
+                window.localStorage.setItem('current_limit_calls', 28);
                 navigator.notification.alert(
                     'Все ваши данные были успешно сохранены.',  // message
                     function(){$('#newPassword').val('');$('#repeatPassword').val('');},         // callback
