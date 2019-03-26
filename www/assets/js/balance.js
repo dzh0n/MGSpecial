@@ -10,6 +10,7 @@ $(document).ready(function(){
 });
 
 $('#balance-form').on('submit', function () {
+    alert();
     var form = $(this);
     $.ajax({
         url: apiUrl+'balance/add',
@@ -18,11 +19,11 @@ $('#balance-form').on('submit', function () {
         cache: false,
         dataType: 'json',
         success: function(data){
-            if(data.result=='error') {
+            if(data.result=='error'|| data.url == false) {
                 navigator.notification.alert(
                     data.errors,  // message
                     function(){},         // callback
-                    'При сохранении возникли ошибки',            // title
+                    'При пополнении возникли ошибки',            // title
                     'Ok'                  // buttonName
                 );
             }

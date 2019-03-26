@@ -10,6 +10,7 @@ $(document).ready(function(){
 });
 
 $('#balance-form').on('submit', function () {
+    alert();
     var form = $(this);
     $.ajax({
         url: apiUrl+'balance/add',
