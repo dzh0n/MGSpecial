@@ -67,7 +67,7 @@ document.addEventListener("deviceready", function(){
     if(window.localStorage.getItem('getPush') != null && window.localStorage.getItem('getPush') == 1) {
         $('.header-fixed-right a').append('<i class="fas fa-check-circle"></i>');
     }
-    else {
+    if(window.localStorage.getItem('getPush') == null) {
         notifications();
     }
 
