@@ -257,8 +257,12 @@ function loadOrder() {
 function checkLimit(tel) {
     current = parseInt(window.localStorage.getItem('current_limit_calls'));
     limit = parseInt(window.localStorage.getItem('limit_calls'));
-    //window.localStorage.setItem('current_limit_calls', 1);
-    //alert(current);
+
+    //если не авторизован отпрвляем на вход
+    if(window.localStorage.getItem("userId")==null) {
+        location.replace('login.html');
+    }
+
     if(current >= limit) {
         location.replace('limit.html');
         return false;
