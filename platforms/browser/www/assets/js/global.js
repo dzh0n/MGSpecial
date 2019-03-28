@@ -54,6 +54,7 @@ function notifications() {
         function (buttonIndex) {
             if(buttonIndex == 1) {
                 window.plugins.OneSignal.sendTag("push", "1");
+                window.plugins.OneSignal.sendTag("special", "1");
                 window.localStorage.setItem("getPush", 1);
             }
             else {
@@ -113,9 +114,26 @@ function setParams() {
         }
     });
 
-    if(window.localStorage.getItem('current_limit_calls') == null) {
+    if(window.localStorage.getItem("userId")!=null) {
+        $.ajax({
+            url: apiUrl + 'user/limit',
+            method: 'POST',
+            data: 'userId=' + window.localStorage.getItem("userId") + '&key=' + apiKey,
+            cache: false,
+            success: function (result) {
+                if (parseInt(result) > 0) {
+                    window.localStorage.setItem('current_limit_calls', result);
+                }
+            }
+        });
+    }
+    else {
         window.localStorage.setItem('current_limit_calls', 0);
     }
+
+    /*if(window.localStorage.getItem('current_limit_calls') == null) {
+        window.localStorage.setItem('current_limit_calls', 0);
+    }*/
 
     if(window.localStorage.getItem('tariff') == null) {
         $.ajax({
@@ -257,15 +275,28 @@ function loadOrder() {
 function checkLimit(tel) {
     current = parseInt(window.localStorage.getItem('current_limit_calls'));
     limit = parseInt(window.localStorage.getItem('limit_calls'));
-    //window.localStorage.setItem('current_limit_calls', 1);
-    //alert(current);
-    if(current >= limit) {
+
+    //если не авторизован отпрвляем на вход
+    if(window.localStorage.getItem("userId")==null) {
+        location.replace('login.html');
+    }
+
+    if(current == 0) {
         location.replace('limit.html');
         return false;
     }
     else {
-        window.localStorage.setItem('current_limit_calls', current + 1);
+        window.localStorage.setItem('current_limit_calls', current - 1);
         window.open('tel:'+tel,'_system');
+        $.ajax({
+            url: apiUrl+'user/updatelimit',
+            method: 'POST',
+            data: 'userId='+window.localStorage.getItem("userId")+'&key='+apiKey,
+            cache: false,
+            success: function(msg){
+
+            }
+        });
     }
 }
 

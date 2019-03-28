@@ -114,9 +114,26 @@ function setParams() {
         }
     });
 
-    if(window.localStorage.getItem('current_limit_calls') == null) {
+    if(window.localStorage.getItem("userId")!=null) {
+        $.ajax({
+            url: apiUrl + 'user/limit',
+            method: 'POST',
+            data: 'userId=' + window.localStorage.getItem("userId") + '&key=' + apiKey,
+            cache: false,
+            success: function (result) {
+                if (parseInt(result) > 0) {
+                    window.localStorage.setItem('current_limit_calls', result);
+                }
+            }
+        });
+    }
+    else {
         window.localStorage.setItem('current_limit_calls', 0);
     }
+
+    /*if(window.localStorage.getItem('current_limit_calls') == null) {
+        window.localStorage.setItem('current_limit_calls', 0);
+    }*/
 
     if(window.localStorage.getItem('tariff') == null) {
         $.ajax({
@@ -264,13 +281,22 @@ function checkLimit(tel) {
         location.replace('login.html');
     }
 
-    if(current >= limit) {
+    if(current == 0) {
         location.replace('limit.html');
         return false;
     }
     else {
-        window.localStorage.setItem('current_limit_calls', current + 1);
+        window.localStorage.setItem('current_limit_calls', current - 1);
         window.open('tel:'+tel,'_system');
+        $.ajax({
+            url: apiUrl+'user/updatelimit',
+            method: 'POST',
+            data: 'userId='+window.localStorage.getItem("userId")+'&key='+apiKey,
+            cache: false,
+            success: function(msg){
+
+            }
+        });
     }
 }
 
