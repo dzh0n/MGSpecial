@@ -22,6 +22,7 @@ $('#login-form').on('submit', function () {
                 storage.setItem('userId', data.uid);
                 storage.setItem('userName', data.name);
                 storage.setItem('userBalance', data.balance);
+                setParams();
                 window.location = 'main.html';
             }
             else {
