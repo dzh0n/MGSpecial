@@ -55,9 +55,7 @@
         </div>
         <script type="text/javascript">
 
-
-
-            function init() {
+            setTimeout(function () {
                 if(coords != '') {
                     var map = new ymaps.Map('y-map', {
                         center: coords.split(','),
@@ -84,6 +82,10 @@
                     /*if(window.innerWidth<500)
                         map.behaviors.disable('drag');*/
                 }
+            }, 2500);
+
+            function init() {
+
 
             }
         </script>
