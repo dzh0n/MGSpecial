@@ -56,7 +56,17 @@ function sendPay() {
         data: "userId="+userId+'&key='+apiKey,
         success: function(data){
             if(data=='success'){
-                window.localStorage.setItem('current_limit_calls', 0);
+                $.ajax({
+                    url: apiUrl + 'user/limit',
+                    method: 'POST',
+                    data: 'userId=' + window.localStorage.getItem("userId") + '&key=' + apiKey,
+                    cache: false,
+                    success: function (result) {
+                        if (parseInt(result) > 0) {
+                            window.localStorage.setItem('current_limit_calls', result);
+                        }
+                    }
+                });
                 navigator.notification.alert(
                     "Продление успешно завершено",  // message
                     function(){
