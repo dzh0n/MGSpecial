@@ -121,7 +121,7 @@ function setParams() {
             data: 'userId=' + window.localStorage.getItem("userId") + '&key=' + apiKey,
             cache: false,
             success: function (result) {
-                if (parseInt(result) > 0) {
+                if (parseInt(result) >= 0) {
                     window.localStorage.setItem('current_limit_calls', result);
                 }
             }
@@ -279,6 +279,7 @@ function checkLimit(tel) {
     //если не авторизован отпрвляем на вход
     if(window.localStorage.getItem("userId")==null) {
         location.replace('login.html');
+        return false;
     }
 
     if(current == 0) {
@@ -287,6 +288,7 @@ function checkLimit(tel) {
     }
     else {
         window.localStorage.setItem('current_limit_calls', current - 1);
+        //alert(window.localStorage.getItem('current_limit_calls'));
         window.open('tel:'+tel,'_system');
         $.ajax({
             url: apiUrl+'user/updatelimit',
