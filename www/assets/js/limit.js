@@ -1,17 +1,28 @@
 $(document).ready(function(){
-    $('.limit-tariff span').text(window.localStorage.getItem('tariff'));
+    //$('.limit-tariff span').text(window.localStorage.getItem('tariff'));
+    //$('.tariff-list').get(apiUrl+'config/loadtariff');
+    $.ajax(
+        {
+            type: 'GET',
+            url: apiUrl+'config/loadtariff',
+            success: function (res) {
+                $('.tariff-list').html(res);
+            }
+        }
+    );
+
 });
 
-$('#limit-pay').on('click', function () {
+function setTariff(price) {
     //проверка зологинен ли пользователь
     if(window.localStorage.getItem('userId')) {
         //если хватае денег
-        if(parseInt(window.localStorage.getItem('userBalance')) >= parseInt(window.localStorage.getItem('tariff'))) {
+        if(parseInt(window.localStorage.getItem('userBalance')) >= parseInt(price)) {
             navigator.notification.confirm(
                 "Списать с вашего баланса оплату за продление работы?",  // message
                 function (buttonIndex) {
-                    if(buttonIndex == 1) {
-                        sendPay();
+                    if(buttonIndex == 2) {
+                        sendPay(parseInt(price));
                     }
                 },         // callback
                 'Продление работы',            // title
@@ -20,7 +31,7 @@ $('#limit-pay').on('click', function () {
         }
         else {
             navigator.notification.alert(
-                "На вашем балансе не достаточно денег, пополните его",  // message
+                "На вашем балансе не достаточно средств, пополните его",  // message
                 function(){
                     location.replace('balance.html');
                 },         // callback
@@ -45,15 +56,19 @@ $('#limit-pay').on('click', function () {
         );
     }
     return false;
+}
+
+$('#limit-pay').on('click', function () {
+
 });
 
 
-function sendPay() {
+function sendPay(price) {
     userId = window.localStorage.getItem('userId');
     $.ajax({
         type: "POST",
-        url: "https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/vapi/balance/paywork",
-        data: "userId="+userId+'&key='+apiKey,
+        url: apiUrl+"balance/paywork",
+        data: "userId="+userId+'&key='+apiKey+'&price='+price,
         success: function(data){
             if(data=='success'){
                 $.ajax({
