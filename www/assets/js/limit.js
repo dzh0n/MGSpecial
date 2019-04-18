@@ -19,7 +19,7 @@ function setTariff(price) {
         //если хватае денег
         if(parseInt(window.localStorage.getItem('userBalance')) >= parseInt(price)) {
             navigator.notification.confirm(
-                "Списать с вашего баланса оплату за продление работы?",  // message
+                "Списать с вашего баланса оплату за выбранный пакет?",  // message
                 function (buttonIndex) {
                     if(buttonIndex == 2) {
                         sendPay(parseInt(price));
@@ -94,6 +94,15 @@ function sendPay(price) {
         }
     });
 }
+
+
+document.addEventListener("deviceready", function() {
+
+    document.addEventListener("backbutton", function (e) {
+        back();
+    }, false);
+
+})
 
 function back() {
     location.replace('main.html');
