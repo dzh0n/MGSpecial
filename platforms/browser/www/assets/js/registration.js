@@ -8,12 +8,35 @@ $(document).ready(function(){
         return false
     });
 
+
+
 });
+
+document.addEventListener("deviceready", function(){
+    showMessageTariff();
+    document.addEventListener("backbutton", function (e) {
+        back();
+    }, false);
+})
 
 function back() {
     location.replace('main.html');
     //navigator.app.backHistory();
 }
+
+function showMessageTariff() {
+    navigator.notification.confirm(
+        "Перед началом регистрации, советуем Вам ознакомиться с нашими тарифами",  // message
+        function (buttonIndex) {
+            if(buttonIndex == 2) {
+                location.replace('tariffs.html');
+            }
+        },         // callback
+        'Тарифы',            // title
+        ['Нет, спасибо','Посмотреть тарифы']                // buttonName
+    );
+}
+
 
 function registration() {
     $('#submit').click();
