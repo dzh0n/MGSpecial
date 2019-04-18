@@ -80,6 +80,7 @@ document.addEventListener("deviceready", function(){
         $('.yes-login').show();
         $('#userName').text(window.localStorage.getItem("userName"));
         $('#userBalance').text(window.localStorage.getItem("userBalance"));
+        $('#userLimit').text(window.localStorage.getItem("current_limit_calls"));
     }
 
     document.addEventListener("offline", onOffline, false);
