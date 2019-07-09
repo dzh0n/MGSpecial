@@ -10,8 +10,8 @@
     <preference name="phonegap-version" value="cli-8.0.0" />
     <preference name="android-build-tool" value="gradle" />
     <preference name="android-minSdkVersion" value="16" />
-    <preference name="android-targetSdkVersion" value="26" />
-    <preference name="android-compileSdkVersion" value="26" />
+    <preference name="android-targetSdkVersion" value="28" />
+    <preference name="android-compileSdkVersion" value="28" />
 
     <plugin name="onesignal-cordova-plugin" spec="2.4.2" source="npm" />
     <plugin name="cordova-plugin-network-information" source="npm" spec="~1.2.0" />
