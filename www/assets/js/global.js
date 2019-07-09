@@ -182,6 +182,8 @@ function uploadOrders(jsonData) {
         tx.executeSql("DELETE FROM Orders", [], function(result){}, function(tx, error){});
     });
 
+    //
+
     if(window.localStorage.getItem('regionId') != null) {
         //загрузка заказов
         $.ajax({
@@ -282,11 +284,11 @@ function checkLimit(tel) {
         return false;
     }
 
-    if(current == 0) {
+   /* if(current == 0) {
         location.replace('limit.html');
         return false;
     }
-    else {
+    else {*/
         window.localStorage.setItem('current_limit_calls', current - 1);
         //alert(window.localStorage.getItem('current_limit_calls'));
         window.open('tel:'+tel,'_system');
@@ -299,7 +301,7 @@ function checkLimit(tel) {
 
             }
         });
-    }
+   // }
 }
 
 function getApiKey() {
