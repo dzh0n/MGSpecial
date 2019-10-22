@@ -151,9 +151,9 @@ function setParams() {
 
 
 
-    /*db.transaction(function(tx) {
+    db.transaction(function(tx) {
         tx.executeSql("DROP TABLE Orders", [], function(result){}, function(tx, error){});
-    });*/
+    });
 
     db.transaction(function (tx) {
         tx.executeSql("SELECT COUNT(*) FROM Orders", [], uploadOrders, function (tx, error) {
@@ -168,6 +168,7 @@ function setParams() {
                 "  client_phone TEXT,\n" +
                 "  user_id INT,\n" +
                 "  coords TEXT,\n" +
+                "  category TEXT,\n" +
                 "  is_pub INT)" , [], uploadOrders, null);
         })
     });
@@ -186,6 +187,7 @@ function uploadOrders(jsonData) {
 
     if(window.localStorage.getItem('regionId') != null) {
         //загрузка заказов
+
         $.ajax({
             url: apiUrl+'orders/special',
             method: 'POST',
@@ -199,7 +201,7 @@ function uploadOrders(jsonData) {
 
                     db.transaction(function (tx) {
                         $.each(result, function (index, value) {
-                            tx.executeSql("INSERT INTO Orders (id, region_id, date_create, subject, content, address, client_name, client_phone, user_id, coords, is_pub) values(?,?,?,?,?,?,?,?,?,?,?)", [
+                            tx.executeSql("INSERT INTO Orders (id, region_id, date_create, subject, content, address, client_name, client_phone, user_id, coords, category, is_pub) values(?,?,?,?,?,?,?,?,?,?,?,?)", [
                                 value.id,
                                 value.region_id,
                                 value.date_create,
@@ -210,6 +212,7 @@ function uploadOrders(jsonData) {
                                 value.client_phone,
                                 value.user_id,
                                 value.coords,
+                                value.category,
                                 value.is_pub
                             ], function (result) {
 
@@ -318,7 +321,8 @@ function getApiKey() {
         mm = '0' + mm
     }
 
-    today = dd + mm + yyyy;
+    today = dd.toString() + mm.toString() + yyyy.toString();
+
     return today;
 }
 

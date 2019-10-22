@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="ru.mg.special" version="2.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="ru.mg.special" version="2.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
     <feature name="Device">
         <param name="browser-package" value="Device" />
     </feature>
-    <name>МГ Спецтехника</name>
+    <name>Мужичок-грузовичок</name>
     <description>
         Приложение сайта мужичок-грузовичок.рф
     </description>
@@ -23,8 +23,8 @@
     <preference name="phonegap-version" value="cli-8.0.0" />
     <preference name="android-build-tool" value="gradle" />
     <preference name="android-minSdkVersion" value="16" />
-    <preference name="android-targetSdkVersion" value="26" />
-    <preference name="android-compileSdkVersion" value="26" />
+    <preference name="android-targetSdkVersion" value="28" />
+    <preference name="android-compileSdkVersion" value="28" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="Fullscreen" value="false" />
     <preference name="orientation" value="portrait" />
