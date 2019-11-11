@@ -62,12 +62,19 @@ body {
     width: 100%;
     padding: 0px;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    align-items: center;
     box-sizing: border-box;
     z-index: 100;
 }
-.header-fixed a {
+.header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+}
+.header-fixed .header-row a {
     text-decoration: none;
     color: inherit;
     outline: none;
@@ -84,7 +91,29 @@ body {
     color: #000;
     font-weight: 500;
 }
-
+.header-scroller {
+    overflow-x: overlay;
+}
+.header-scroller ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+}
+.header-scroller ul li a {
+    display: block;
+    white-space: nowrap;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: inherit;
+    outline: none;
+    font-size: 16px;
+    border-bottom: #FFDD0A 4px solid;
+    font-weight: 500;
+    margin: 0px 5px;
+}
+.header-scroller ul li.active a {
+    border-color: #fff;
+}
 .advert-list {
     display: flex;
     flex-direction: column;

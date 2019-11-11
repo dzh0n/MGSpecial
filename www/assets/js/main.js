@@ -64,6 +64,9 @@ document.addEventListener("deviceready", function(){
 
     loadOrders();
 
+    $('.header-scroller ul li').removeClass('active');
+    $('.header-scroller ul li').eq(category).addClass('active');
+
     if(window.localStorage.getItem('getPush') != null && window.localStorage.getItem('getPush') == 1) {
         $('.header-fixed-right a').append('<i class="fas fa-check-circle"></i>');
     }

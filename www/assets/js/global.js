@@ -2,8 +2,17 @@ var apiKey = getApiKey();
 var apiUrl = 'https://xn----dtbckhdelflyecx2bh6dk.xn--p1ai/vapi/';
 var db = openDatabase("mgs.db", '1.0', "MGS DateBase", 2 * 1024 * 1024);
 var coords = '';
+var category = 0;
 
 $(document).ready(function(){
+
+    //засунем сюда проверку категории
+    if(window.localStorage.getItem("category")==null) {
+        window.localStorage.setItem('category', category);
+    }
+    else {
+        category = window.localStorage.getItem("category");
+    }
 
     $('.close-slideMenu').on('click', function () {
         //$(".slideMenu").animate({width:'toggle'},350);
@@ -101,6 +110,8 @@ notificationOpenedCallback = function(jsonData) {
 
 
 function setParams() {
+
+
 
     $.ajax({
         url: apiUrl+'config/limit_calls',
@@ -234,7 +245,7 @@ function uploadOrders(jsonData) {
 function loadOrders() {
     $('.advert-list').html('');
     db.transaction(function (tx) {
-        tx.executeSql("SELECT * FROM Orders ORDER BY id DESC", [], function (tx, result) {
+        tx.executeSql("SELECT * FROM Orders WHERE category = "+category+" ORDER BY id DESC", [], function (tx, result) {
             for (var i = 0; i < result.rows.length; i++) {
 
                 $('.advert-list').append('<div class="advert-list-item">\n' +
@@ -307,7 +318,16 @@ function checkLimit(tel) {
    // }
 }
 
+function setCategory(id) {
+    window.localStorage.setItem('category', id);
+    category = id;
+    $('.header-scroller ul li').removeClass('active');
+    $('.header-scroller ul li').eq(id).addClass('active');
+    loadOrders();
+}
+
 function getApiKey() {
+
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth() + 1; //January is 0!

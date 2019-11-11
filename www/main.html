@@ -13,17 +13,35 @@
 </head>
 <body class="main-page animated fadeIn">
 
+<style>
+    .header-fixed {
+        height: 90px;
+    }
+    .main-page .wrapper {
+        padding-top: 100px;
+    }
+</style>
+
 <div class="wrapper">
     <!-- header -->
     <div class="header-fixed">
-        <div class="header-fixed-left">
-            <a href="javascript:;" onclick="openMenu()"><i class="fas fa-bars"></i></a>
+        <div class="header-row">
+            <div class="header-fixed-left">
+                <a href="javascript:;" onclick="openMenu()"><i class="fas fa-bars"></i></a>
+            </div>
+            <div class="header-fixed-center">
+                <h2>Лента заказов</h2>
+            </div>
+            <div class="header-fixed-right">
+                <a href="javascript:;" onclick="notifications()"><i class="far fa-bell"></i></a>
+            </div>
         </div>
-        <div class="header-fixed-center">
-            <h2>Лента заказов</h2>
-        </div>
-        <div class="header-fixed-right">
-            <a href="javascript:;" onclick="notifications()"><i class="far fa-bell"></i></a>
+        <div class="header-scroller">
+            <ul>
+                <li class="active"><a href="javascript:;" onclick="setCategory(0)">Вся техника</a></li>
+                <li><a href="javascript:;"onclick="setCategory(1)">Автокраны</a></li>
+
+            </ul>
         </div>
     </div>
     <!-- header -->
