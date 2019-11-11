@@ -64,6 +64,7 @@ function notifications() {
             if(buttonIndex == 1) {
                 window.plugins.OneSignal.sendTag("push", "1");
                 window.plugins.OneSignal.sendTag("special", "1");
+                window.plugins.OneSignal.sendTag("category", category);
                 window.localStorage.setItem("getPush", 1);
             }
             else {
